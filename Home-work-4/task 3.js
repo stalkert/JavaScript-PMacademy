@@ -6,3 +6,66 @@
 Если же введено было число - кидать в alert наименование месяца (введено 1 - вывести January); 
 По желанию  - сделать задачу с минимальным использованием switch/case.
 */
+
+const month = prompt("Enter the month");
+
+const months = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december",
+];
+if (typeof month === number && month >= 1 && month <= 12) {
+  alert(months[month - 1]);
+}
+else (typeof month === string){ switch (months.toLowerCase()) {
+  case value:"january"
+   return alert(1);
+
+   case value:"february"
+    return alert(2);
+
+    case value:"march"
+    
+    return alert(3);
+    case value:"april"
+    
+    return alert(4);
+    case value:"april"
+    
+    return alert(5);
+    case value:"june"
+    
+    return alert(6);
+    case value:"july"
+    
+    return alert(7);
+    case value:"august"
+    
+    return alert(8);
+    case value:"september"
+    
+    return alert(9);
+    case value:"october"
+    
+    return alert(10);
+    case value:"november"
+    
+   return alert(11);
+   case value:"december"
+    
+   return alert(12);
+  default:
+    
+   return alert('You have entered wrong data, please try again');
+}
+}
+
