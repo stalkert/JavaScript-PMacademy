@@ -13,9 +13,12 @@ const funcNumber = (number) => {
 
 if (isNaN(firstNumber) || isNaN(secondNumber)) {
   message = "Incorrect number";
-} else {
+} else if (firstNumber && secondNumber) {
   message = `First number: ${funcNumber(
     firstNumber
   )}, Second number: ${funcNumber(secondNumber)}`;
+} else {
+  message = "Try again";
 }
+
 alert(message);
