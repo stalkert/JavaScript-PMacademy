@@ -4,6 +4,6 @@
 
 const str = "ECMAScript 2015 (6th Edition, ECMA-262)";
 
-const searchNumber = +str.replace(/\D+/g, "");
+const searchNumber = str.match(/\d+/g);
 
-alert(searchNumber);
+alert(`Знайдені числові значення: ${searchNumber}`);
