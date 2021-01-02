@@ -17,4 +17,14 @@ console.log([...content.match(findPhoneNumber)]);
 
 /////// 3.Написать логику которая находила бы все теги <h1> и заменила их на <h2/>
 
-const findTagH1 = /<\/?h1.*?>/g;
+const body = document.body.outerHTML;
+const findTagH1 = /<h1*?>/g;
+const replaceH1toH2 = (document.body.outerHTML = body.replace(
+  findTagH1,
+  "<h2/>"
+));
+
+//////////4.Найти все теги <script></script>
+
+const findTagScript = /(<|%3C)script[\s\S]*?(>|%3E)[\s\S]*?(<|%3C)(\/|%2F)script[\s\S]*?(>|%3E)/g;
+console.log([...content.match(findTagScript)]);
