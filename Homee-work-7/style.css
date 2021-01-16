@@ -1,0 +1,32 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+.wrapper {
+  max-width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+}
+
+.sectionRenameAndDeleteItem,
+.sectionCreateItem {
+  display: none;
+  flex-direction: column;
+  width: 70px;
+  padding: 2px;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+}
+
+:hover.btn {
+  background-color: rgb(192, 185, 185);
+}
