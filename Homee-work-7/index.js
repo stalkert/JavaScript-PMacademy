@@ -69,7 +69,7 @@ const handleLeftClick = () => {
 };
 
 const createFile = () => {
-  const newName = prompt("Enter file name:");
+  const newName = prompt("Enter file name:", name);
 
   if (newName === null || newName === "") return;
 
