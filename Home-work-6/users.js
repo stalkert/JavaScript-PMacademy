@@ -1,6 +1,4 @@
-"use strict";
-
-const users = [
+export const users = [
   {
     id: 1,
     name: "Leanne Graham",
@@ -243,58 +241,3 @@ const users = [
     },
   },
 ];
-
-/* 1) Создать хэш таблицу
- Где ключ = user id, а значение - объект user
- Из данного массива users
-*/
-
-const myUsersMap = new Map();
-users.map((user) => {
-  myUsersMap.set(user.id, user);
-});
-console.log(myUsersMap);
-
-/* 2) Запросить у пользователя id - вывести 
-данные по пользователю
-*/
-
-const usersId = +prompt("Enter the id");
-
-if (isNaN(usersId)) {
-  console.log("Incorrect number");
-} else if (usersId === null) {
-  console.log(" Try again");
-}
-
-const valueUsers = myUsersMap.get(usersId);
-
-if (valueUsers) {
-  console.log(valueUsers);
-} else {
-  console.log(` User with id:${usersId} not found`);
-}
-
-/* 3) Запросить у пользователя id,
- есть такой есть - запросить 
- дополнительное поле - адрес. Вывести адрес.*/
-
-const usersIdAddress = +prompt("Enter the id");
-
-if (isNaN(usersIdAddress)) {
-  console.log("Incorrect number");
-} else if (usersIdAddress === null) {
-  console.log(" Try again");
-}
-
-const valueUsersAddress = myUsersMap.get(usersIdAddress);
-
-if (valueUsersAddress) {
-  console.log(valueUsersAddress.address);
-} else {
-  console.log(` User with id:${usersIdAddress} not found`);
-}
-
-/* 4) Запросить у пользователя ввести название компании 
-  - найти пользователя с такой компанией 
-  - вернуть объект пользователя.*/
