@@ -59,16 +59,26 @@ if (valueUsersAddress) {
 
 const companyName = prompt("Enter company name");
 let workingUser = false;
-myUsersMap.forEach((value) => {
-  if (value.company.name.toLowerCase() === companyName.toLowerCase()) {
-    workingUser = true;
-    console.log("Task-4:", JSON.stringify(value));
+try {
+  myUsersMap.forEach((value) => {
+    if (value.company.name.toLowerCase() === companyName.toLowerCase()) {
+      workingUser = true;
+      console.log("Task-4:", JSON.stringify(value));
+    }
+  });
+  if (!workingUser) {
+    console.log("Task-4:", ` User with company name ${companyName} not found`);
   }
-});
-
-if (!workingUser) {
-  console.log("Task-4:", ` User with company name ${companyName} not found`);
+} catch (error) {
+  console.log("Task-4:", error);
 }
+
+// myUsersMap.forEach((value) => {
+//   if (value.company.name.toLowerCase() === companyName.toLowerCase()) {
+//     workingUser = true;
+//     console.log("Task-4:", JSON.stringify(value));
+//   }
+// });
 
 /* 5) Сделать каждый property id пользователя 
 неудаляемым и запретить его мутацию/изменение.
