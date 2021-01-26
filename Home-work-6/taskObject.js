@@ -73,13 +73,6 @@ try {
   console.log("Task-4:", error);
 }
 
-// myUsersMap.forEach((value) => {
-//   if (value.company.name.toLowerCase() === companyName.toLowerCase()) {
-//     workingUser = true;
-//     console.log("Task-4:", JSON.stringify(value));
-//   }
-// });
-
 /* 5) Сделать каждый property id пользователя 
 неудаляемым и запретить его мутацию/изменение.
 */
