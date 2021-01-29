@@ -48,6 +48,10 @@ if (isNaN(usersIdAddress)) {
 const valueUsersAddress = myUsersMap.get(usersIdAddress);
 
 if (valueUsersAddress) {
+  let userAddress = prompt("Enter the address");
+  userAddress
+    ? (valueUsersAddress.address = userAddress)
+    : valueUsersAddress.address;
   console.log("Task-3:", valueUsersAddress.address);
 } else {
   console.log("Task-3:", ` User with id:${usersIdAddress} not found`);
@@ -97,11 +101,11 @@ try {
 }
 console.log("Task-5:", secondUser.id);
 
-/*
-6) Написать сеттер - чтобы при изменении phone - проверялась
- валидность номера телефона при помощи регулярного 
- выражения для (ххх) ххх-хх-хх - все х - числа.
- */
+// /*
+// 6) Написать сеттер - чтобы при изменении phone - проверялась
+//  валидность номера телефона при помощи регулярного
+//  выражения для (ххх) ххх-хх-хх - все х - числа.
+//  */
 
 const phoneRegExp = /^\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/g;
 
