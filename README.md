@@ -1,3 +1,1 @@
 # JavaScript-PMacademy
-
-##Home-work
