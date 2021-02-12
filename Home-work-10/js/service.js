@@ -1,8 +1,8 @@
-const baseUrl = "https://api.github.com/users/";
-
 export default {
-  fetchArticles(query) {
+  fetchArticles(query, baseUrl = "https://api.github.com/users/") {
     const requestParams = `${query}`;
-    return fetch(baseUrl + requestParams).then((res) => res.json());
+    return fetch(baseUrl + requestParams)
+      .then((res) => res.json())
+      .catch((error) => console.log("error"));
   },
 };
