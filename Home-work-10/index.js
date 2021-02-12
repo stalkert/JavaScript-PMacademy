@@ -18,20 +18,12 @@ function userSearchInputHandler(e) {
   clearList();
 
   const searchQuery = e.target.value;
-  console.log(searchQuery);
   userSearch.fetchArticles(searchQuery).then((data) => {
-    console.log(data);
     if (data.message === "Not Found") {
-      console.log("No result");
+      refs.userInfo.innerHTML = "No result";
     } else {
-      refs.userInfo.innerHTML =
-        "<img src=" +
-        `${data.avatar_url}` +
-        ">" +
-        "<br>" +
-        "<h2>" +
-        `${data.login}` +
-        "</h2>";
+      refs.userInfo.innerHTML = `<img src= ${data.avatar_url} style="width: 200px;"> <br><h2> ${data.login} </h2>`;
+
       followersUrl = data.followers_url;
       repositoriesUrl = data.repos_url;
       followersBtn.style.display = "block";
@@ -42,46 +34,34 @@ function userSearchInputHandler(e) {
 
 function showRepositories() {
   userSearch.fetchArticles(repositoriesUrl, "").then((data) => {
-    console.log(data);
-    if (data.message === "Not Found") {
-      console.log("No result");
+    if (data.message === "Not Found" || data.length === 0) {
+      refs.repositoriesList.innerHTML = "No result";
     } else {
       refs.repositoriesList.innerHTML = data.reduce((acc, current) => {
         return (
           acc +
-          "<li>" +
-          "<a href=" +
-          `${current.html_url}` +
-          ">" +
-          `${current.name}` +
-          "</a>" +
-          "</li>"
+          `<li class = "item"> <a class = "item-link" href=${current.html_url}>${current.name} </a></li>`
         );
       }, "");
     }
   });
+  refs.repositoriesBtn.disabled = "false";
 }
 
 function showFollowers() {
   userSearch.fetchArticles(followersUrl, "").then((data) => {
-    console.log(data);
-    if (data.message === "Not Found") {
-      console.log("No result");
+    if (data.message === "Not Found" || data.length === 0) {
+      refs.followersList.innerHTML = "No result";
     } else {
       refs.followersList.innerHTML = data.reduce((acc, current) => {
         return (
           acc +
-          "<li>" +
-          "<a href=" +
-          `${current.html_url}` +
-          ">" +
-          `${current.login}` +
-          "</a>" +
-          "</li>"
+          `<li class = "item"> <a class = "item-link" href=${current.html_url}>${current.login} </a></li>`
         );
       }, "");
     }
   });
+  refs.followersBtn.disabled = "false";
 }
 function clearList() {
   refs.repositoriesList.innerHTML = "";
