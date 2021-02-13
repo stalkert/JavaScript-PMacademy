@@ -67,6 +67,8 @@ function clearList() {
   refs.repositoriesList.innerHTML = "";
   refs.followersList.innerHTML = "";
   refs.userInfo.innerHTML = "";
+  refs.followersBtn.removeAttribute("disabled");
+  refs.repositoriesBtn.removeAttribute("disabled");
   refs.followersBtn.style.display = "none";
   refs.repositoriesBtn.style.display = "none";
 }
