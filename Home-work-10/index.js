@@ -4,14 +4,18 @@ import debounce from "./js/debounce.js";
 
 let followersUrl = "";
 let repositoriesUrl = "";
+const followersList = 'followersList';
+const repositoriesList = 'repositoriesList';
+const followersBtn = 'followersBtn';
+const repositoriesBtn = 'repositoriesBtn';
 
 refs.searchForm.addEventListener(
   "input",
   debounce(userSearchInputHandler, 1000)
 );
 
-refs.followersBtn.addEventListener("click", showFollowers);
-refs.repositoriesBtn.addEventListener("click", showRepositories);
+refs.followersBtn.addEventListener("click", showUserData(followersList, followersBtn));
+refs.repositoriesBtn.addEventListener("click", showUserData(repositoriesList, repositoriesBtn));
 
 function userSearchInputHandler(e) {
   e.preventDefault();
@@ -26,43 +30,30 @@ function userSearchInputHandler(e) {
 
       followersUrl = data.followers_url;
       repositoriesUrl = data.repos_url;
-      followersBtn.style.display = "block";
-      repositoriesBtn.style.display = "block";
+      refs.followersBtn.style.display = "block";
+      refs.repositoriesBtn.style.display = "block";
     }
   });
 }
 
-function showRepositories() {
-  userSearch.fetchArticles(repositoriesUrl, "").then((data) => {
-    if (data.message === "Not Found" || data.length === 0) {
-      refs.repositoriesList.innerHTML = "No result";
-    } else {
-      refs.repositoriesList.innerHTML = data.reduce((acc, current) => {
-        return (
-          acc +
-          `<li class = "item"> <a class = "item-link" href=${current.html_url}>${current.name} </a></li>`
-        );
-      }, "");
-    }
-  });
-  refs.repositoriesBtn.disabled = "false";
+function showUserData(dataTypeList, dataTypeBtn) {
+  return () => {
+    userSearch.fetchArticles(dataTypeList === followersList ? followersUrl : repositoriesUrl, "").then((data) => {
+      if (data.message === "Not Found" || data.length === 0) {
+        refs[dataTypeList].innerHTML = "No result";
+      } else {
+        refs[dataTypeList].innerHTML = data.reduce((acc, current) => {
+          return (
+            acc +
+            `<li class = "item"> <a class = "item-link" href=${current.html_url}>${dataTypeList === followersList ? current.login : current.name} </a></li>`
+          );
+        }, "");
+      }
+    });
+  refs[dataTypeBtn].disabled = "false";
+ }
 }
 
-function showFollowers() {
-  userSearch.fetchArticles(followersUrl, "").then((data) => {
-    if (data.message === "Not Found" || data.length === 0) {
-      refs.followersList.innerHTML = "No result";
-    } else {
-      refs.followersList.innerHTML = data.reduce((acc, current) => {
-        return (
-          acc +
-          `<li class = "item"> <a class = "item-link" href=${current.html_url}>${current.login} </a></li>`
-        );
-      }, "");
-    }
-  });
-  refs.followersBtn.disabled = "false";
-}
 function clearList() {
   refs.repositoriesList.innerHTML = "";
   refs.followersList.innerHTML = "";
